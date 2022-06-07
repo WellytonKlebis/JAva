@@ -1,6 +1,11 @@
 
 package util;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+
 
 public class ConnectionFactory {
   
@@ -10,13 +15,13 @@ public class ConnectionFactory {
  public static final String PASS = ""; 
  
  
- public static Connection getConnection(){
- 
- try {
-       Class.forName(Driver);
-       return DriverManager.getConnection(URL, USER, PASS):
- } catch (Exeption ex){
-     throw new RuntimeException("Erro na conexão com o bqnco de dados ",ex ); 
+ public static Connection getConnection(){ // Metodo retorna uma conexão,é estatico não preciso criar um objeto para usar essa função
+ /* Dentro do tray coloco o codigo que pode gerar erro */
+      try { // forma de pegar erros que possam acontecer e fazer um tratamento.
+        Class.forName(DRIVER);// carrega o Driver 
+        return DriverManager.getConnection(URL, USER, PASS); //  extipula a conexão com banco de dados 
+     } catch (Exception ex){
+        throw new RuntimeException("Erro na conexão com o banco de dados ",ex ); 
  
   }
  
